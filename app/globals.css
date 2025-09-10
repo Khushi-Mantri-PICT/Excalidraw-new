@@ -1,0 +1,42 @@
+@@ .. @@
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
++/* Mobile touch improvements */
++@media (max-width: 768px) {
++  * {
++    -webkit-tap-highlight-color: transparent;
++    -webkit-touch-callout: none;
++    -webkit-user-select: none;
++    user-select: none;
++  }
++  
++  canvas {
++    touch-action: none;
++  }
++}
++
++/* Responsive text sizes */
++@media (max-width: 640px) {
++  .text-4xl { font-size: 2rem; }
++  .text-3xl { font-size: 1.5rem; }
++  .text-2xl { font-size: 1.25rem; }
++  .text-xl { font-size: 1.125rem; }
++}
+
+/* Clean backgrounds inspired by Better Uptime */
