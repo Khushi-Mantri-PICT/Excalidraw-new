@@ -35,6 +35,27 @@ A collaborative drawing application similar to Excalidraw where users can draw s
 
 ## Setup Instructions
 
+### Quick Start with Docker
+
+1. **Reset and start with Docker:**
+   ```bash
+   pnpm run docker:reset
+   pnpm run docker:up
+   ```
+
+2. **Access the application:**
+   - Frontend: http://localhost:3000
+   - HTTP Backend: http://localhost:3001
+   - WebSocket Backend: ws://localhost:8080
+
+### Development Setup (Local)
+
+1. **Quick setup:**
+   ```bash
+   pnpm run dev:setup
+   pnpm dev
+   ```
+
 ### 1. Install Dependencies
 
 ```bash

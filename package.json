@@ -10,7 +10,11 @@
     "db:generate": "cd packages/db && npx prisma generate",
     "db:push": "cd packages/db && npx prisma db push",
     "db:migrate": "cd packages/db && npx prisma migrate dev",
-    "setup": "pnpm install && pnpm db:generate && pnpm db:push"
+    "setup": "pnpm install && pnpm db:generate && pnpm db:push",
+    "docker:reset": "./scripts/reset-db.sh",
+    "docker:up": "docker-compose up --build",
+    "docker:down": "docker-compose down -v",
+    "dev:setup": "./scripts/dev-setup.sh"
   },
   "devDependencies": {
     "prettier": "^3.2.5",

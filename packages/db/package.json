@@ -8,6 +8,7 @@
   "scripts": {
     "migrate:prod": "prisma migrate deploy",
     "migrate:auto": "prisma migrate dev --name init --skip-seed",
+    "migrate:reset": "prisma migrate reset --force",
     "migrate": "prisma migrate dev",
     "generate": "prisma generate",
     "build": "tsc -b",

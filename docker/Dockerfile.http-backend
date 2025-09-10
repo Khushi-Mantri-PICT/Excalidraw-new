@@ -30,7 +30,7 @@ RUN pnpm --filter @repo/backend-common run build
 # Build HTTP backend
 RUN pnpm --filter http-backend run build
 
-# Generate Prisma client and run migrations
+# Generate Prisma client
 WORKDIR /app/packages/db
 RUN pnpm run generate
 
@@ -39,5 +39,5 @@ WORKDIR /app
 # Expose port
 EXPOSE 3001
 
-# Start with migrations then the application
-CMD ["sh", "-c", "cd packages/db && pnpm run generate && pnpm run migrate:auto && cd ../.. && pnpm --filter http-backend start"]
+# Start with database reset and migrations, then the application
+CMD ["sh", "-c", "cd packages/db && pnpm run generate && npx prisma migrate reset --force && npx prisma migrate dev --name init --skip-seed && cd ../.. && pnpm --filter http-backend start"]

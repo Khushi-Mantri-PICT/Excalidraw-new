@@ -17,6 +17,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - app-network
 
   http-backend:
     build:
@@ -33,6 +35,8 @@ services:
     ports:
       - "3001:3001"
     restart: unless-stopped
+    networks:
+      - app-network
 
   ws-backend:
     build:
@@ -40,8 +44,7 @@ services:
       dockerfile: docker/Dockerfile.ws-backend
     container_name: ws-backend
     depends_on:
-      postgres:
-        condition: service_healthy
+      - http-backend
     environment:
       DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/drawing_app"
       JWT_SECRET: "secret"
@@ -49,6 +52,8 @@ services:
     ports:
       - "8080:8080"
     restart: unless-stopped
+    networks:
+      - app-network
 
   frontend:
     build:
@@ -64,6 +69,12 @@ services:
     ports:
       - "3000:3000"
     restart: unless-stopped
+    networks:
+      - app-network
 
 volumes:
   postgres_data:
+
+networks:
+  app-network:
+    driver: bridge
